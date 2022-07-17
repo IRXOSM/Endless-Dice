@@ -94,16 +94,16 @@ function nextRound() {
 
     data.end = false
 
-    if (Math.random() < (data.round > 40 ? 0.3 : 0.2) && data.round > 1) {
+    if (Math.random() < (data.round > 40 ? 0.3 : 0.01) {
         pass()
     }
 
-    if (data.round > 20) {
+    if (data.round > 5) {
         data.enemy.min_s += 1
         data.enemy.max_s += 1
     }
 
-        if (data.round > 50) {
+        if (data.round > 30) {
         data.enemy.min_s += 2
         data.enemy.max_s += 2
     }
