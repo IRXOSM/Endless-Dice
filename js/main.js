@@ -119,8 +119,8 @@ function chooseCard(p,e) {
     data.player.cards.push(p)
     data.enemy.cards.push(e)
 
-    CARDS[p][3]("player")
-    CARDS[e][3]("enemy")
+    CARDS[p][10]("player")
+    CARDS[e][10]("enemy")
 
     nextRound()
 }
