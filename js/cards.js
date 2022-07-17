@@ -171,7 +171,7 @@ const CARDS = {
     ],
 
     curse1: [
-        "Cursed Multiplier",
+        "Holy Multiplier",
         x=>`Multiply your number of side as well as your multiplier by <b class='green'>1.5</b>`,
         x=>x=="player",
         x=>{
