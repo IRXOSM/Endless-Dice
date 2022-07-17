@@ -32,15 +32,15 @@ const newData = _=>{
             product: 1,
             energyCos: 0,
             health: 100,
-            maxHealth: 50,
+            maxHealth: 100,
             energy: 0,
-            maxEnergy: 10,
+            maxEnergy: 20,
 
             mult: 1,
-            crit: 0,
+            crit: 1,
 
             min_s: 1,
-            max_s: 6,
+            max_s: 20,
 
             cards: [],
         },
