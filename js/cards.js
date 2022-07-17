@@ -172,8 +172,8 @@ const CARDS = {
 
     curse1: [
         "Holy Multiplier",
-        x=>`Multiply your number of side as well as your multiplier by <b class='green'>1.5</b>`,
-        x=>x=="player",
+        x=>`Multiply your number of side as well as your multiplier by <b class='green'>1.5</b>. <\n> <b class='red'>CAN ONLY BE PICKED UP ONCE.</b>`,
+        x=>!data[x].cards.includes("curse1") && math.random() < 1/10,
         x=>{
             data[x].min_s *= 1.5
             data[x].max_s *= 1.5
