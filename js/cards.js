@@ -105,14 +105,6 @@ const CARDS = {
         },
     ],
     
-en1: [
-        "Enemy's Oktoberfest",
-        x=>`Increase enemy's starting health by <b class='green'>50%</b>`,
-        x=>x=="enemy",
-        x=>{
-            data.enemy.maxHealth = Math.floor(data.enemy.maxHealth*1.5)
-        },
-    ],
     en2: [
         "Stronger Enemy",
         x=>`Increase enemy's multiplier by <b class='green'>1</b>`,
@@ -131,10 +123,10 @@ en1: [
     ],
     en4: [
         "Catastrophic",
-        x=>`Increase enemy's multiplier by <b class='green'>4</b>`,
+        x=>`Increase enemy's multiplier by <b class='green'>2</b>`,
         x=>x=="enemy" && data.round >= 20,
         x=>{
-            data.enemy.mult += 4
+            data.enemy.mult += 2
         },
     ],
     en5: [
