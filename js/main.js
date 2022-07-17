@@ -150,7 +150,6 @@ function scrambleDice(grid) {
         }
     }
 }
-
 function generateRandomCards() {
     var t = ["player","enemy"]
     var ac = [[],[]]
