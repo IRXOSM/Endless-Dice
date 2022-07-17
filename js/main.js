@@ -94,7 +94,7 @@ function nextRound() {
 
     data.end = false
 
-    if (Math.random() < (data.round > 20 ? 0.3 : 0.2) && data.round > 10) {
+    if (Math.random() < (data.round > 40 ? 0.3 : 0.2) && data.round > 10) {
         pass()
     }
 
@@ -124,20 +124,20 @@ function chooseCard(p,e) {
     data.player.cards.push(p)
     data.enemy.cards.push(e)
 
-    CARDS[p][5]("player")
-    CARDS[e][5]("enemy")
+    CARDS[p][3]("player")
+    CARDS[e][3]("enemy")
 
     nextRound()
 }
 
 function scrambleDice(grid) {
-    for (let y = 1; y <= 4; y++) for (let x = 1; x <= 5; x++) {
+    for (let y = 1; y <= 5; y++) for (let x = 1; x <= 5; x++) {
         var id = y*10+x
         var g = data[grid][id]
 
         if (g !== undefined) if (g.type == "scrambler") for (let yy = -1; yy <= 1; yy++) for (let xx = -1; xx <= 1; xx++) {
             var yyy = y+yy, xxx = x+xx
-            if (!(yy == 0 && xx == 0) && yyy > 0 && yyy < 5 && xxx > 0 && xxx < 6) {
+            if (!(yy == 0 && xx == 0) && yyy > 0 && yyy < 6 && xxx > 0 && xxx < 6) {
                 var gg = data[grid][yyy*10+xxx]
                 var gd = document.getElementById(grid+"_"+id).getBoundingClientRect()
                 createTextPopupParticle("Scrambled!",gd.x+gd.width/2,gd.y+gd.height/2,true)
@@ -405,7 +405,7 @@ function autoEnemyMove() {
     updateGridDices("p_grid")
     updateGridDices("e_grid")
 
-    if (!data.end) setTimeout(autoEnemyMove,1000)
+    if (!data.end) setTimeout(autoEnemyMove,500)
 }
 
 function updateAvSlots(id) {
