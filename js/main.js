@@ -94,7 +94,7 @@ function nextRound() {
 
     data.end = false
 
-    if (Math.random() < (data.round > 40 ? 0.3 : 0.2) && data.round > 10) {
+    if (Math.random() < (data.round > 40 ? 0.3 : 0.2) && data.round > 1) {
         pass()
     }
 
@@ -131,13 +131,13 @@ function chooseCard(p,e) {
 }
 
 function scrambleDice(grid) {
-    for (let y = 1; y <= 5; y++) for (let x = 1; x <= 5; x++) {
+    for (let y = 1; y <= 4; y++) for (let x = 1; x <= 5; x++) {
         var id = y*10+x
         var g = data[grid][id]
 
         if (g !== undefined) if (g.type == "scrambler") for (let yy = -1; yy <= 1; yy++) for (let xx = -1; xx <= 1; xx++) {
             var yyy = y+yy, xxx = x+xx
-            if (!(yy == 0 && xx == 0) && yyy > 0 && yyy < 6 && xxx > 0 && xxx < 6) {
+            if (!(yy == 0 && xx == 0) && yyy > 0 && yyy < 5 && xxx > 0 && xxx < 6) {
                 var gg = data[grid][yyy*10+xxx]
                 var gd = document.getElementById(grid+"_"+id).getBoundingClientRect()
                 createTextPopupParticle("Scrambled!",gd.x+gd.width/2,gd.y+gd.height/2,true)
@@ -163,7 +163,7 @@ function generateRandomCards() {
         for (j in ks) if (CARDS[ks[j]][2](t[i])) ac[i].push(ks[j])
     }
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 3; i++) {
         let [p,e] = [ac[0][Math.floor(Math.random()*ac[0].length)],ac[1][Math.floor(Math.random()*ac[1].length)]]
         let [cp,ce] = [CARDS[p],CARDS[e]]
 
