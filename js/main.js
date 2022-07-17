@@ -19,7 +19,7 @@ const newData = _=>{
             maxEnergy: 10,
 
             mult: 1,
-            crit: 0.15,
+            crit: 0,
 
             min_s: 1,
             max_s: 6,
@@ -31,13 +31,13 @@ const newData = _=>{
             pick: [0,0],
             product: 1,
             energyCos: 0,
-            health: 50,
+            health: 100,
             maxHealth: 50,
             energy: 0,
             maxEnergy: 10,
 
             mult: 1,
-            crit: 0.15,
+            crit: 0,
 
             min_s: 1,
             max_s: 6,
@@ -77,14 +77,14 @@ function shuffle(array) {
 
 function nextRound() {
     data.round++
-    data.enemy.maxHealth = Math.floor(data.enemy.maxHealth*(data.round>20?1.4:1.2))
-    data.enemy.mult += data.round>20?1:0.25
+    data.enemy.maxHealth = Math.floor(data.enemy.maxHealth*(data.round>40?1.25:30?1.2:20?1.15:10?1.1:1.05)+50)
+    data.enemy.mult += data.round>40?0.4:30?0.35:20?0.3:10?0.25:0.2
     data.enemy.health = data.enemy.maxHealth
     data.e_grid = {}
 
     if (data.player.cards.includes("curse2")) {
         data.player.health = Math.floor(data.player.health*1.1)
-        data.enemy.mult *= 1.05
+        data.enemy.mult *= 1.1
     }
     
     resetTwo("player")
@@ -100,9 +100,14 @@ function nextRound() {
 
     if (data.round > 20) {
         data.enemy.min_s += 1
-        data.enemy.max_s += randomInt(1,3)
+        data.enemy.max_s += 1
     }
 
+        if (data.round > 50) {
+        data.enemy.min_s += 2
+        data.enemy.max_s += 2
+    }
+    
     document.getElementById("conclusion").style.top = "-50%"
 
     document.getElementById("enemy_div").style.transform = "translateX(0%)"
@@ -119,8 +124,8 @@ function chooseCard(p,e) {
     data.player.cards.push(p)
     data.enemy.cards.push(e)
 
-    CARDS[p][10]("player")
-    CARDS[e][10]("enemy")
+    CARDS[p][5]("player")
+    CARDS[e][5]("enemy")
 
     nextRound()
 }
@@ -158,7 +163,7 @@ function generateRandomCards() {
         for (j in ks) if (CARDS[ks[j]][2](t[i])) ac[i].push(ks[j])
     }
 
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 5; i++) {
         let [p,e] = [ac[0][Math.floor(Math.random()*ac[0].length)],ac[1][Math.floor(Math.random()*ac[1].length)]]
         let [cp,ce] = [CARDS[p],CARDS[e]]
 
@@ -178,8 +183,8 @@ function generateRandomCards() {
 }
 
 function clearCost() {
-    if (tmp.av_p_slots.length < 20 && data.player.energy >= 3 && data.move == "player") {
-        data.player.energy -= 3
+    if (tmp.av_p_slots.length < 20 && data.player.energy >= 2) {
+        data.player.energy -= 2
 
         data.p_grid = {}
         updateAvSlots("p_grid")
