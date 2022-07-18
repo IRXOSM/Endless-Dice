@@ -76,18 +76,18 @@ const CARDS = {
     ],
     e1: [
         "Energy Increaser",
-        x=>`Increase ${['your',"enemy's"][x]} maximum energy by <b class='green'>3</b>`,
-        x=>data[x].maxEnergy<25,
+        x=>`Increase ${['your',"enemy's"][x]} maximum energy by <b class='green'>1</b>`,
+        x=>data[x].maxEnergy<20,
         x=>{
-            data[x].maxEnergy += 3
+            data[x].maxEnergy += 1
         },
     ],
     e2: [
         "Energy Increaser",
-        x=>`Increase ${['your',"enemy's"][x]} maximum energy by <b class='green'>5</b>`,
-        x=>data[x].maxEnergy>25,
+        x=>`Increase ${['your',"enemy's"][x]} maximum energy by <b class='green'>2</b>`,
+        x=>data[x].maxEnergy>15,
         x=>{
-            data[x].maxEnergy += 5
+            data[x].maxEnergy += 2
         },
     ],
     e3: [
