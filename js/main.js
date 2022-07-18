@@ -77,7 +77,7 @@ function shuffle(array) {
 
 function nextRound() {
     data.round++
-    data.enemy.maxHealth = Math.floor(data.enemy.maxHealth*(data.round>40?1.25:30?1.2:20?1.15:10?1.1:1.05)+50)
+    data.enemy.maxHealth = Math.floor(data.enemy.maxHealth*(data.round>40?1.25:30?1.2:20?1.15:10?1.1:1.05)+5)
     data.enemy.mult += data.round>40?0.4:30?0.35:20?0.3:10?0.25:0.2
     data.enemy.health = data.enemy.maxHealth
     data.e_grid = {}
@@ -162,7 +162,7 @@ function generateRandomCards() {
         for (j in ks) if (CARDS[ks[j]][2](t[i])) ac[i].push(ks[j])
     }
 
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 5; i++) {
         let [p,e] = [ac[0][Math.floor(Math.random()*ac[0].length)],ac[1][Math.floor(Math.random()*ac[1].length)]]
         let [cp,ce] = [CARDS[p],CARDS[e]]
 
